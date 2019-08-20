@@ -8,14 +8,18 @@
   <body>
     {{ block "header" .}}
         {{ partial "header" . }}
-    {{end}}
+    {{ end }}
 
     {{ block "main" . }}
 
-    {{end}}
+    {{ end }}
 
     {{ block "footer" . }}
         {{ partial "footer" . }}
-    {{end}}
+    {{ end }}
+
+    {{ block "scripts" .}}
+      
+    {{ end }}
   </body>
 </html>

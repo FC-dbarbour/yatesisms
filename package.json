@@ -1,0 +1,25 @@
+{
+  "name": "yatesisms",
+  "version": "1.0.0",
+  "description": "These are Yatesisms.",
+  "main": "index.js",
+  "dependencies": {
+    "keyword-extractor": "0.0.17",
+    "netlify-lambda": "^1.6.2",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FC-dbarbour/yatesisms.git"
+  },
+  "author": "Dan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FC-dbarbour/yatesisms/issues"
+  },
+  "homepage": "https://github.com/FC-dbarbour/yatesisms#readme"
+}
