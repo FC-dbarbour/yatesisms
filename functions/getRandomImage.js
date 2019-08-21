@@ -11,45 +11,45 @@ var getKeywords = function(yatesism) {
     });
 };
 
-var getImages = function(keywords) {
-    var unsplashRequests = [];
-
-    for (let keyword of keywords) {
-        unsplashRequests.push(new Promise(function(res, rej) {
+var getRandomImage = function(keyword) {
+    var getDataFromUnsplash = function(keyword) {
+        return new Promise(function(res, rej) {
             https.get(`https://api.unsplash.com/search/photos?client_id=${access_key}&query=${keyword}`, (resp) => {
-            let data = '';
-
-            resp.on('data', (chunk) => {
-                data += chunk;
-            });
-
-            resp.on('end', () => {
-                res(data);
-            });
-
+                let data = '';
+        
+                resp.on('data', (chunk) => {
+                    data += chunk;
+                });
+        
+                resp.on('end', () => {
+                    res(data);
+                });
+    
             }).on("error", (err) => {
                 rej("Error: " + err.message);
             });
-        }));
-    }
+        });
+    };
 
-    return unsplashRequests;
-};
-
+    return new Promise(function(res, rej) {
+        getDataFromUnsplash(keyword).then(function(data) {
+            data = JSON.parse(data);
+            res(data.results[Math.floor(Math.random() * data.results.length)]);
+        });
+    })
+    
+}
 
 exports.handler = function(event, context, callback) {
     const {yatesism} = JSON.parse(event.body);
     var keywords = getKeywords(yatesism);
-    var unsplash = getImages(keywords);
-
-    Promise.all(unsplash).then(function(group) {
-        var images = [];
-
-        
-        
+    var randomImage = getRandomImage(keywords[Math.floor(Math.random() * keywords.length)]);
+    
+    randomImage.then(function(data) {
         callback(null, {
             statusCode: 200,
-            body: JSON.stringify({msg: images})
+            body: JSON.stringify({msg: data})
         });
     });
+    
 };
