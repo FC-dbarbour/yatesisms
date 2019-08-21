@@ -13,7 +13,7 @@ var getKeywords = function(yatesism) {
 
 var getImageDataFromUnsplash = function(keyword) {
     return new Promise(function(res, rej) {
-        https.get(`https://api.unsplash.com/search/photos?client_id=${access_key}&query=${keyword}`, (resp) => {
+        https.get(querystring.stringify(`https://api.unsplash.com/search/photos?client_id=${access_key}&query=${keyword}`), (resp) => {
             let data = '';
     
             resp.on('data', (chunk) => {
