@@ -1,4 +1,3 @@
-const querystring = require('querystring');
 const https = require('https');
 const keyword_extractor = require("keyword-extractor");
 const access_key = '087d36b85bea07c5e57e9ee36f4f874d36d6200946435151a4d9327c41f62424';
@@ -15,7 +14,7 @@ var getKeywords = function(yatesism) {
 var getRandomImage = function(keyword) {
     var getDataFromUnsplash = function(keyword) {
         return new Promise(function(res, rej) {
-            https.get(querystring.stringify(`https://api.unsplash.com/search/photos?client_id=${access_key}&query=${keyword}`), (resp) => {
+            https.get(`https://api.unsplash.com/search/photos?client_id=${access_key}&query=${keyword}`, (resp) => {
                 let data = '';
         
                 resp.on('data', (chunk) => {
