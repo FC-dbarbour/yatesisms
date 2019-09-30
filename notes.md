@@ -2,6 +2,9 @@ https://github.com/onury/invert-color
 https://lokeshdhakar.com/projects/color-thief/#api
 https://github.com/fast-average-color/fast-average-color
 https://github.com/steveukx/git-js
+https://github.com/jwagner/smartcrop.js/
+https://github.com/jwagner/smartcrop-cli
+https://www.npmjs.com/package/vue2-touch-events
 
 netlify-lambda serve functions
 
